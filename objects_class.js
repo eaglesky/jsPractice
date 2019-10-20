@@ -53,3 +53,17 @@ let teacher1 = new Teacher('Allen', 'Chin', 29, 'male', ['Tennis', 'Board games'
 console.log(`Teacher1's subject is ${teacher1.subject}`);
 teacher1.subject = 'Math';
 console.log(`Then teacher1's subject become ${teacher1.subject}`);
+
+// The getter and setter are always defined on the class prototype as the
+// other functions.
+console.log('Property descriptor of Teacher.prototype.subject: ', Object.getOwnPropertyDescriptor(Teacher.prototype, 'subject'));
+
+// ["name", "age", "gender", "interests", "_subject", "grade"]
+// No getter/setter 'subject' eventhough it is visible in the console!
+console.log('Properties of teacher1: ' + Object.getOwnPropertyNames(teacher1));
+
+// ["constructor", "subject"]. See, "subject" is really defined on the class
+// prototype.
+console.log('Properties of Teacher.prototype: ' + Object.getOwnPropertyNames(Teacher.prototype));
+
+console.log('Property descriptor of __proto__: ', Object.getOwnPropertyDescriptor(Object.prototype, '__proto__'));
