@@ -1,4 +1,14 @@
+/**
+ * A base class
+ */
 class Person {
+  /**
+   * @param {string} first First name.
+   * @param {string} last Last name.
+   * @param {number} age
+   * @param {string} gender
+   * @param {string[]} interests
+   */
   constructor(first, last, age, gender, interests) {
     this.name = {
       first,
@@ -9,10 +19,16 @@ class Person {
     this.interests = interests;
   }
 
+  /**
+   * Prints greeting message in the console.
+   */
   greeting() {
     console.log(`Hi! I'm ${this.name.first}`);
   }
 
+  /**
+   * Prints farewell message in the console.
+   */
   farewell() {
     console.log(`${this.name.first} has left the building. Bye for now!`);
   }
@@ -28,7 +44,19 @@ const leia = new Person("Leia", "Organa", 19, "female", ["Government"]);
 // Leia has left the building. Bye for now
 leia.farewell();
 
+/**
+ * A subclass example.
+ */
 class Teacher extends Person {
+  /**
+   * @param {*} first
+   * @param {*} last
+   * @param {*} age
+   * @param {*} gender
+   * @param {*} interests
+   * @param {*} subject
+   * @param {*} grade
+   */
   constructor(first, last, age, gender, interests, subject, grade) {
     super(first, last, age, gender, interests);
 
@@ -37,10 +65,16 @@ class Teacher extends Person {
     this.grade = grade;
   }
 
+  /**
+   * Gets subject.
+   */
   get subject() {
     return this._subject;
   }
 
+  /**
+   * @param{String} newSubject
+   */
   set subject(newSubject) {
     this._subject = newSubject;
   }
@@ -71,7 +105,8 @@ console.log(
 // No getter/setter 'subject' eventhough it is visible in the console!
 console.log("Properties of teacher1: " + Object.getOwnPropertyNames(teacher1));
 
-// ["constructor", "subject"]. See, "subject" is really defined on the class prototype.
+// ["constructor", "subject"]. See, "subject" is really defined on the class
+// prototype.
 console.log(
   "Properties of Teacher.prototype: " +
     Object.getOwnPropertyNames(Teacher.prototype)
